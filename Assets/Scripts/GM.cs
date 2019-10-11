@@ -32,8 +32,8 @@ public class GM : MonoBehaviour
 
     public void Setup()
     {
-        clonePaddle = Instantiate(paddle, transform.position, Quaternion.identity) as GameObject;
-        Instantiate(bricksPrefab, transform.position, Quaternion.identity);
+        clonePaddle = Instantiate(paddle, transform.position, Quaternion.identity);
+        Instantiate(bricksPrefab, bricksPrefab.transform.position, bricksPrefab.transform.rotation);
     }
 
     void CheckGameOver()
@@ -41,14 +41,14 @@ public class GM : MonoBehaviour
         if (bricks < 1)
         {
             youWon.SetActive(true);
-            Time.timeScale = .25f;
+            Time.timeScale = .1f;
             Invoke("Reset", resetDelay);
         }
 
         if (lives < 1)
         {
             gameOver.SetActive(true);
-            Time.timeScale = .25f;
+            Time.timeScale = .1f;
             Invoke("Reset", resetDelay);
         }
     }
@@ -63,7 +63,7 @@ public class GM : MonoBehaviour
     public void LoseLife()
     {
         lives--;
-        livesText.text = string.Format("Lives: {0}", lives);
+        livesText.text = string.Format("Жизни: {0}", lives);
         Instantiate(deathParticles, clonePaddle.transform.position, Quaternion.identity);
 
         Destroy(clonePaddle);

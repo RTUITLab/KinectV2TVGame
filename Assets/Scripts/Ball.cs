@@ -24,6 +24,14 @@ public class Ball : MonoBehaviour
         }
         else
         {
+            if (rb.velocity.magnitude > 23)
+            {
+                rb.velocity = rb.velocity.normalized * 23;
+            }
+            else if (rb.velocity.magnitude < 19)
+            {
+                rb.velocity = rb.velocity.normalized * 19;
+            }
             //KinectManager.instance.IsFire = false;
         }
     }

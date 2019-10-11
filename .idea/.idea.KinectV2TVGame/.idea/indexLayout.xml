@@ -21,7 +21,6 @@
       <Path>Logs</Path>
       <Path>Temp</Path>
       <Path>UWP</Path>
-      <Path>UnityPackageManager</Path>
       <Path>obj</Path>
     </explicitExcludes>
   </component>
