@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Paddle : MonoBehaviour
 {
-    public float paddleSpeed = 1f;
+    public float paddleSpeed = 1.5f;
 
     private Vector3 playerPos = new Vector3(0, -9.5f, 0);
     
@@ -24,7 +24,7 @@ public class Paddle : MonoBehaviour
         else
             xPos = transform.position.x + (Input.GetAxis("Horizontal") * paddleSpeed);
 
-        playerPos = new Vector3(Mathf.Clamp(xPos, -8f, 8f), -9.5f, 0f);
+        playerPos = new Vector3(Mathf.Clamp(xPos, -7f, 7f), transform.position.y, 0);
 
         rb.MovePosition(playerPos); // move physics obj only this way!!!
     }

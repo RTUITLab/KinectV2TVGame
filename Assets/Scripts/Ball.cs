@@ -1,15 +1,22 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Ball : MonoBehaviour
 {
-    public float ballInitialVelocity = 600f;
+    public float ballInitialVelocity = 6000f;
+    public AudioClip hitSound;
+    
 
     private Rigidbody rb;
     private bool ballInPlay;
+    private AudioSource audioSource;
+    
 
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        audioSource = gameObject.AddComponent<AudioSource>();
     }
 
     void Update()
@@ -24,15 +31,24 @@ public class Ball : MonoBehaviour
         }
         else
         {
-            if (rb.velocity.magnitude > 23)
+            if (rb.velocity.magnitude > 40)
             {
-                rb.velocity = rb.velocity.normalized * 23;
+                rb.velocity = rb.velocity.normalized * 40;
             }
-            else if (rb.velocity.magnitude < 19)
+            else if (rb.velocity.magnitude < 11 && rb.velocity.magnitude > 0.5f)
             {
-                rb.velocity = rb.velocity.normalized * 19;
+                rb.velocity = rb.velocity.normalized * 11;
+            }
+            else if (rb.velocity.magnitude < 0.5f)
+            {
+                rb.velocity = Random.insideUnitSphere;
             }
             //KinectManager.instance.IsFire = false;
         }
+    }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        audioSource.PlayOneShot(hitSound);
     }
 }

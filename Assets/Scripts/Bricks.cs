@@ -3,11 +3,12 @@
 public class Bricks : MonoBehaviour
 {
     public GameObject brickParticle;
-
+    public AudioClip destroySound;
     void OnCollisionEnter(Collision other)
     {
-        Instantiate(brickParticle, transform.position, Quaternion.identity);
         GM.instance.DestroyBrick();
-        Destroy(gameObject, 0.015f);
+        var particles = Instantiate(brickParticle, transform.position, Quaternion.identity);
+        particles.AddComponent<AudioSource>().PlayOneShot(destroySound);
+        Destroy(gameObject, 0.04f);
     }
 }

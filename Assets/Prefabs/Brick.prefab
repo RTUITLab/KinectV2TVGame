@@ -105,3 +105,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   brickParticle: {fileID: 166210, guid: 450c031ed451a2744b818af54178ba17, type: 3}
+  destroySound: {fileID: 8300000, guid: c50ad43d789d4324c89c4343e2c16d3b, type: 3}

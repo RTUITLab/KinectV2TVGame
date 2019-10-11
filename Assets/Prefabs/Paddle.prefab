@@ -29,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 119510}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.9976788, y: 4.305251, z: -14.077736}
+  m_LocalPosition: {x: 0, y: -7.5, z: 0}
   m_LocalScale: {x: 5, y: 1, z: 1}
   m_Children:
   - {fileID: 455000}
@@ -231,7 +231,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 1
   m_Interpolate: 1
-  m_Constraints: 0
+  m_Constraints: 8
   m_CollisionDetection: 3
 --- !u!114 &11458636
 MonoBehaviour:
@@ -245,7 +245,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6808616348e2d1640a741e3cb3d2ba93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ballInitialVelocity: 600
+  ballInitialVelocity: 800
+  hitSound: {fileID: 8300000, guid: 7113b9b2801e5dc42b7ca742eaeb55ba, type: 3}
 --- !u!96 &3946333457555287027
 TrailRenderer:
   serializedVersion: 2

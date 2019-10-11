@@ -1,11 +1,12 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
 
 public class GM : MonoBehaviour
 {
     public int lives = 3;
-    public int bricks = 20;
+    public int bricks = 60;
     public float resetDelay = 1f;
     public Text livesText;
 
@@ -19,6 +20,11 @@ public class GM : MonoBehaviour
 
     private GameObject clonePaddle;
 
+    public AudioClip winSound;
+    public AudioClip lostLifeSound;
+    public AudioClip loseSound;
+    private AudioSource audioSource;
+
     // Use this for initialization
     void Awake()
     {
@@ -30,33 +36,48 @@ public class GM : MonoBehaviour
         Setup();
     }
 
+    private void Start()
+    {
+        audioSource = gameObject.AddComponent<AudioSource>();
+    }
+
     public void Setup()
     {
-        clonePaddle = Instantiate(paddle, transform.position, Quaternion.identity);
+        clonePaddle = Instantiate(paddle, paddle.transform.position, paddle.transform.rotation);
         Instantiate(bricksPrefab, bricksPrefab.transform.position, bricksPrefab.transform.rotation);
     }
 
-    void CheckGameOver()
+    void CheckGameOver(bool lostlife = false)
     {
+
         if (bricks < 1)
         {
             youWon.SetActive(true);
+            audioSource.PlayOneShot(winSound);
             Time.timeScale = .1f;
             Invoke("Reset", resetDelay);
+            return;
         }
 
-        if (lives < 1)
+        if (lostlife)
         {
-            gameOver.SetActive(true);
-            Time.timeScale = .1f;
-            Invoke("Reset", resetDelay);
+            if (lives < 1)
+            {
+                gameOver.SetActive(true);
+                audioSource.PlayOneShot(loseSound);
+                Time.timeScale = .1f;
+                Invoke("Reset", resetDelay);
+            }
+            else
+            {
+                audioSource.PlayOneShot(lostLifeSound, 0.6f);
+            }
         }
     }
 
     void Reset()
     {
         Time.timeScale = 1f;
-        Application.LoadLevel(Application.loadedLevel);
         Application.Quit();
     }
 
@@ -65,24 +86,22 @@ public class GM : MonoBehaviour
         lives--;
         livesText.text = string.Format("Жизни: {0}", lives);
         Instantiate(deathParticles, clonePaddle.transform.position, Quaternion.identity);
-
         Destroy(clonePaddle);
 
         Invoke("SetupPaddle", resetDelay);
 
-        CheckGameOver();
+        CheckGameOver(true);
     }
 
     void SetupPaddle()
     {
         KinectManager.instance.IsFire = false;
-
-        clonePaddle = Instantiate(paddle, transform.position, Quaternion.identity) as GameObject;
+        clonePaddle = Instantiate(paddle, paddle.transform.position, paddle.transform.rotation);
     }
 
     public void DestroyBrick()
     {
-        bricks--;
+        bricks -= 1;
         CheckGameOver();
     }
 }

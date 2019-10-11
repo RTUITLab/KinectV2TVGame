@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="C:\Users\Denis Pozdnyakov\.Rider2019.2\system\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\Denis Pozdnyakov\.Rider2019.2\system\resharper-host\local\Transient\ReSharperHost\v192\SolutionCaches\_KinectV2TVGame.-712793068.00" t="ExcludeRecursive" />
-    <e p="D:\Projects\KinectV2TVGame" t="IncludeRecursive">
+    <e p="C:\Users\winda\.Rider2019.2\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\winda\.Rider2019.2\system\resharper-host\local\Transient\ReSharperHost\v192\SolutionCaches\_KinectV2TVGame.-1366632189.00" t="ExcludeRecursive" />
+    <e p="D:\UnityProjects\KinectV2TVGame" t="IncludeRecursive">
       <e p="Assembly-CSharp-Editor-firstpass.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp-firstpass.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
