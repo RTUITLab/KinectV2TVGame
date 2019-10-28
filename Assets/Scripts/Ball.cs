@@ -31,9 +31,9 @@ public class Ball : MonoBehaviour
         }
         else
         {
-            if (rb.velocity.magnitude > 40)
+            if (rb.velocity.magnitude > 30)
             {
-                rb.velocity = rb.velocity.normalized * 40;
+                rb.velocity = rb.velocity.normalized * 30;
             }
             else if (rb.velocity.magnitude < 11 && rb.velocity.magnitude > 0.5f)
             {
