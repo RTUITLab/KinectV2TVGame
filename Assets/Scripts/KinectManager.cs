@@ -60,6 +60,8 @@ public class KinectManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (_sensor == null) //null check!!!!
+            return;
         IsAvailable = _sensor.IsAvailable;
 
         if (_bodyFrameReader != null)
