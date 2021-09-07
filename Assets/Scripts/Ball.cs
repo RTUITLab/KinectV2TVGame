@@ -17,7 +17,6 @@ public class Ball : MonoBehaviour
     [SerializeField] Image _timeBar;
     float _timeconst;
     bool _activeTimer = false;
-    bool _levelLoaded = false;
 
     void Awake()
     {
@@ -30,7 +29,6 @@ public class Ball : MonoBehaviour
         _timeconst = _timerEndInSeconds;
         _timeBar = GameObject.Find("TimeEndLine").GetComponent<Image>();
         _timeBar.color = new Color(255, 255, 255, 0);
-        _levelLoaded = true;
     }
     void Update()
     {
