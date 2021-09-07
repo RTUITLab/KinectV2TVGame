@@ -1,17 +1,23 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 public class Ball : MonoBehaviour
 {
     public float ballInitialVelocity = 6000f;
     public AudioClip hitSound;
-    
+
 
     private Rigidbody rb;
     private bool ballInPlay;
     private AudioSource audioSource;
-    
+    [SerializeField] float _timerEndInSeconds;
+    [SerializeField] Image _timeBar;
+    float _timeconst;
+    bool _activeTimer = false;
+    bool _levelLoaded = false;
 
     void Awake()
     {
@@ -19,6 +25,13 @@ public class Ball : MonoBehaviour
         audioSource = gameObject.AddComponent<AudioSource>();
     }
 
+    void Start()
+    {
+        _timeconst = _timerEndInSeconds;
+        _timeBar = GameObject.Find("TimeEndLine").GetComponent<Image>();
+        _timeBar.color = new Color(255, 255, 255, 0);
+        _levelLoaded = true;
+    }
     void Update()
     {
         if ((Input.GetButtonDown("Fire1") || KinectManager.instance.IsFire) && ballInPlay == false)
@@ -28,6 +41,7 @@ public class Ball : MonoBehaviour
             rb.isKinematic = false;
             rb.AddForce(new Vector3(ballInitialVelocity, ballInitialVelocity, 0));
             KinectManager.instance.IsFire = false;
+            EndTimer();
         }
         else
         {
@@ -44,9 +58,40 @@ public class Ball : MonoBehaviour
                 rb.velocity = Random.insideUnitSphere;
             }
             //KinectManager.instance.IsFire = false;
+            if (!ballInPlay && !_activeTimer)
+                StartTimer();
+
+        }
+        if (_activeTimer)
+        {
+            _timerEndInSeconds -= Time.deltaTime;
+            _timeBar.fillAmount = _timerEndInSeconds / _timeconst;
+            if (_timerEndInSeconds < 0)
+            {
+                EndGame();
+            }
         }
     }
+    void EndTimer()
+    {
+        if (_activeTimer)
+        {
+            _activeTimer = false;
+            _timerEndInSeconds = _timeconst;
+            _timeBar.color = new Color(255, 255, 255, 0);
+        }
+    }
+    void StartTimer()
+    {
+        _activeTimer = true;
+        _timeBar.color = new Color(255, 255, 255, 255);
+    }
 
+    void EndGame()
+    {
+        Time.timeScale = 1f;
+        Application.Quit();
+    }
     private void OnCollisionEnter(Collision other)
     {
         audioSource.PlayOneShot(hitSound);
