@@ -15,6 +15,7 @@ public class Ball : MonoBehaviour
     private AudioSource audioSource;
     [SerializeField] float _timerEndInSeconds;
     [SerializeField] Image _timeBar;
+    TutorialManager _tm;
     float _timeconst;
     bool _activeTimer = false;
 
@@ -28,6 +29,7 @@ public class Ball : MonoBehaviour
     {
         _timeconst = _timerEndInSeconds;
         _timeBar = GameObject.Find("TimeEndLine").GetComponent<Image>();
+        _tm = GameObject.Find("TutorialManager").GetComponent<TutorialManager>();
         _timeBar.color = new Color(255, 255, 255, 0);
     }
     void Update()
@@ -40,6 +42,7 @@ public class Ball : MonoBehaviour
             rb.AddForce(new Vector3(ballInitialVelocity, ballInitialVelocity, 0));
             KinectManager.instance.IsFire = false;
             EndTimer();
+            _tm.HideHints();
         }
         else
         {

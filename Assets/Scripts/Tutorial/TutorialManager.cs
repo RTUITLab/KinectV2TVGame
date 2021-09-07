@@ -28,5 +28,8 @@ public class TutorialManager : MonoBehaviour
         }
         _backgroundBox.SetActive(false);
     }
+   public void HideHints(){
+       _backgroundBox.SetActive(false);
+    }
 
 }
