@@ -12,7 +12,10 @@ public class TutorialManager : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(ShotHints());
+        if (_showTutorial)
+        {
+            StartCoroutine(ShotHints());
+        }
     }
     IEnumerator ShotHints()
     {
