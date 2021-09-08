@@ -2,6 +2,15 @@ pool:
   vmImage: windows-2019
 
 steps:
+- task: PowerShell@2
+  inputs:
+    targetType: 'inline'
+    script: 'Install-Module UnitySetup -Scope CurrentUser -Force'
+- task: PowerShell@2
+  inputs:
+    targetType: 'inline'
+    script: 'Find-UnitySetupInstaller -Version ''2017.3.0f3'' | Format-Table'
+
 - task: UnityBuildTask@3
   inputs:
     buildTarget: 'standalone'
