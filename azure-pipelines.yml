@@ -6,7 +6,7 @@ steps:
   displayName: install unity powershell module
   inputs:
     targetType: 'inline'
-    script: 'Install-Module UnitySetup -Scope CurrentUser -Force'
+    script: 'Install-Module UnitySetup -Scope CurrentUser -Force -confirm:$false'
 - task: PowerShell@2
   displayName: install unity 2019.2.20f1
   inputs:
