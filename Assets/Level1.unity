@@ -349,7 +349,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &434708124
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2481,7 +2481,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1834447884
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2535,7 +2535,7 @@ MonoBehaviour:
     m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: "\u0427\u0442\u043E\u0431\u044B \u0443\u043F\u0440\u0430\u0432\u043B\u044F\u0442\u044C
-    \u043F\u043B\u0430\u0442\u0444\u043E\u0440\u043C\u043E\u0439, \n\u0434\u0432\u0438\u0433\u0430\u0439\u0442\u0435
+    \u043F\u043B\u0430\u0442\u0444\u043E\u0440\u043C\u043E\u0439, \n\u043D\u0430\u043A\u043B\u043E\u043D\u044F\u0439\u0442\u0435\u0441\u044C
     \u0442\u0435\u043B\u043E\u043C\n \u0432\u043F\u0440\u0430\u0432\u043E \u0438\u043B\u0438
     \u0432\u043B\u0435\u0432\u043E "
 --- !u!222 &1834447886
